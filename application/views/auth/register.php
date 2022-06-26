@@ -8,7 +8,7 @@
     <meta name="description" content="Sistem Informasi Rekrutmen Karyawan PT. Gading Megah Perkasa">
     <meta name="author" content="Sistem Informasi Rekrutmen Karyawan PT. Gading Megah Perkasa">
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?= base_url(); ?>assets/icon.jpeg" type="image/x-icon">
     <!-- VENDOR CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/font-awesome/css/font-awesome.min.css">
@@ -25,7 +25,8 @@
             <div class="vertical-align-middle auth-main">
                 <div class="auth-box">
                     <div class="top">
-                        <img src="<?= base_url() ?>assets/images/logo-white.svg" alt="Iconic">
+                        <img src="<?= base_url(); ?>assets/logo2.png" alt="PT Gading Megah Perkasa">
+                        <h3 class="text-light" style="font-weight:bold;">PT Gading Megah Perkasa</h3>
                     </div>
                     <div class="card">
                         <div class="flash-data-success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
