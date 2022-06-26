@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Sistem Informasi Rekrutmen Karyawan PT. Gading Megah Perkasa">
     <meta name="author" content="Sistem Informasi Rekrutmen Karyawan PT. Gading Megah Perkasa">
-    <link rel="icon" href="<?= base_url(); ?>assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?= base_url(); ?>assets/icon.jpeg" type="image/x-icon">
 
     <!-- VENDOR CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css">
