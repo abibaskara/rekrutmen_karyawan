@@ -803,9 +803,8 @@ class User extends CI_Controller
             'apply_job.id_user' => $_SESSION['id_user']
         ];
         $data_apply = $this->AdminModel->get_apply('apply_job', $id);
-
         foreach ($data_apply as $row) {
-            if ($row->hasil_test == 'Lolos Seleksi') {
+            if ($row->status_hasil == 'Lolos Seleksi') {
                 if ($row->hasil_test != NULL && $row->hasil_psikotes !== NULL) {
                     $data_update = [
                         'status_hasil' => 'Sedang Di Proses'
