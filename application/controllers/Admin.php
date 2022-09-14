@@ -733,6 +733,52 @@ class Admin extends CI_Controller
         $this->template->load('layout/layout', 'admin/psikotes', $data);
     }
 
+    public function editSoalPsikotes()
+    {
+        # code...
+        $id['id_psikotes'] = $this->input->post('id_psikotes');
+        $id_psikotes = $this->input->post('id');
+        $pertanyaan = $this->input->post('pertanyaan');
+        $option_a = $this->input->post('option_a');
+        $option_b = $this->input->post('option_b');
+        $option_c = $this->input->post('option_c');
+        $option_d = $this->input->post('option_d');
+        $kunjaw = $this->input->post('kunjaw');
+
+        try {
+            $data = [
+                'pertanyaan_psikotes' => $pertanyaan,
+                'option_a_psikotes' => $option_a,
+                'option_b_psikotes' => $option_b,
+                'option_c_psikotes' => $option_c,
+                'option_d_psikotes' => $option_d,
+                'kunjaw_psikotes' => $kunjaw,
+            ];
+
+            $this->AdminModel->updateData('psikotes', $data, $id);
+            $this->session->set_flashdata('success', 'Psikotes Berhasil Di Update!');
+            redirect("Admin/Psikotes/$id_psikotes");
+        } catch (\Exception $e) {
+            $this->session->set_flashdata('error', 'Psikotes Gagal Di Update!');
+            redirect("Admin/Psikotes/$id_psikotes");
+        }
+    }
+
+    public function deleteSoalPsikotes()
+    {
+        # code...
+        $id['id_psikotes'] = $this->input->post('id_psikotes');
+        $id_psikotes = $this->input->post('id');
+        try {
+            $this->AdminModel->deleteData('psikotes', $id);
+            $this->session->set_flashdata('success', 'Data Psikotes Berhasil Dihapus!');
+            redirect("Admin/Psikotes/$id_psikotes");
+        } catch (\Exception $e) {
+            $this->session->set_flashdata('error', 'Data Psikotes Gagal Dihapus!');
+            redirect("Admin/Psikotes/$id_psikotes");
+        }
+    }
+
     ############################## CALON PELAMAR ##############################
     public function Calon_Pelamar()
     {
