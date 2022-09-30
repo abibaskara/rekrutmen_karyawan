@@ -76,14 +76,14 @@ class Manager extends CI_Controller
     public function CancelApply($id)
     {
         $id_apply = $id;
-        $id['id_apply_job'] = $id;
+        $where['id_apply_job'] = $id;
 
         try {
             $data = [
                 'status_hasil' => 'Tidak Diterima',
             ];
 
-            $this->AdminModel->updateData('apply_job', $data, $id);
+            $this->AdminModel->updateData('apply_job', $data, $where);
             $this->session->set_flashdata('success', 'Calon Pelamar Tidak Berhasil ke tahap selanjutnya!');
             redirect("Manager/Calon_Pelamar");
         } catch (\Exception $e) {
@@ -158,6 +158,45 @@ class Manager extends CI_Controller
         ];
 
         $this->template->load('layout/layout', 'manager/detail_pelamar_tidak_diterima', $data);
+    }
+
+    // ############################## LAPORAN PELAMAR DITERIMA ############################## //
+    public function Laporan_Pelamar_Diterima()
+    {
+        $this->template->load('layout/layout', 'manager/laporan_diterima');
+    }
+
+    public function get_laporan_diterima()
+    {
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        if (!$this->input->is_ajax_request()) {
+            $result['status'] = false;
+        } else {
+            $result['data'] = $this->AdminModel->get_laporan_diterima($start_date, $end_date)->result();
+            $result['total'] = $this->AdminModel->get_laporan_total($start_date, $end_date)->row_array();
+            $result['status'] = true;
+        }
+        echo json_encode($result);
+    }
+
+    public function Laporan_Pelamar_Tidak_Diterima()
+    {
+        $this->template->load('layout/layout', 'manager/laporan_tidak_diterima');
+    }
+
+    public function get_laporan_tidak_diterima()
+    {
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        if (!$this->input->is_ajax_request()) {
+            $result['status'] = false;
+        } else {
+            $result['data'] = $this->AdminModel->get_laporan_tidak_diterima($start_date, $end_date)->result();
+            $result['total'] = $this->AdminModel->get_laporan_tidak_total($start_date, $end_date)->row_array();
+            $result['status'] = true;
+        }
+        echo json_encode($result);
     }
 
     // ############################## MY PROFILE ############################## //

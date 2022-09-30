@@ -295,4 +295,44 @@ class AdminModel extends CI_Model
 
         return $this->db->get()->row_array();
     }
+
+    public function get_laporan_diterima($start_date, $end_date)
+    {
+        $this->db->select('*');
+        $this->db->from('apply_job');
+        $this->db->join('lowongan', 'lowongan.id_lowongan=apply_job.id_lowongan');
+        $this->db->join('pelamar', 'pelamar.id_pelamar=apply_job.id_pelamar');
+        $this->db->where('tgl_lamar BETWEEN "' . $start_date . '" AND "' . $end_date . '"');
+        $this->db->where('status_hasil', 'Diterima');
+        return $this->db->get();
+    }
+
+    public function get_laporan_total($start_date, $end_date)
+    {
+        $this->db->select('COUNT(id_apply_job) AS Total');
+        $this->db->from('apply_job');
+        $this->db->where('tgl_lamar BETWEEN "' . $start_date . '" AND "' . $end_date . '"');
+        $this->db->where('status_hasil', 'Diterima');
+        return $this->db->get();
+    }
+
+    public function get_laporan_tidak_diterima($start_date, $end_date)
+    {
+        $this->db->select('*');
+        $this->db->from('apply_job');
+        $this->db->join('lowongan', 'lowongan.id_lowongan=apply_job.id_lowongan');
+        $this->db->join('pelamar', 'pelamar.id_pelamar=apply_job.id_pelamar');
+        $this->db->where('tgl_lamar BETWEEN "' . $start_date . '" AND "' . $end_date . '"');
+        $this->db->where('status_hasil', 'Tidak Diterima');
+        return $this->db->get();
+    }
+
+    public function get_laporan_tidak_total($start_date, $end_date)
+    {
+        $this->db->select('COUNT(id_apply_job) AS Total');
+        $this->db->from('apply_job');
+        $this->db->where('tgl_lamar BETWEEN "' . $start_date . '" AND "' . $end_date . '"');
+        $this->db->where('status_hasil', 'Tidak Diterima');
+        return $this->db->get();
+    }
 }

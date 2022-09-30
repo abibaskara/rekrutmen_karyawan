@@ -27,6 +27,12 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/multi-select/css/multi-select.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/nouislider/nouislider.min.css" />
 
     <!-- SWEETALERT -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/sweetalert/sweetalert.css" />
@@ -200,6 +206,19 @@
 
                                     <li <?= $this->uri->segment(2) == 'Pelamar_Tidak_Diterima' ? 'class="active"' : '' ?>>
                                         <a href="<?= base_url() ?>Manager/Pelamar_Tidak_Diterima"><i class="fa fa-thumbs-down"></i><span>Pelamar Tidak Diterima</span></a>
+                                    </li>
+
+                                    <li <?= $this->uri->segment(2) == 'Laporan_Pelamar_Diterima' || 'Laporan_Pelamar_Tidak_Diterima' ? 'class="active"' : '' ?>>
+                                        <a href="#forms" class="has-arrow"><i class="fa fa-bar-chart"></i><span>Laporan</span></a>
+                                        <ul>
+                                            <li <?= $this->uri->segment(2) == 'Laporan_Pelamar_Diterima' ? 'class="active"' : '' ?>>
+                                                <a href="<?= base_url() ?>Manager/Laporan_Pelamar_Diterima"><span>Pelamar Diterima</span></a>
+                                            </li>
+
+                                            <li <?= $this->uri->segment(2) == 'Laporan_Pelamar_Tidak_Diterima' ? 'class="active"' : '' ?>>
+                                                <a href="<?= base_url() ?>Manager/Laporan_Pelamar_Tidak_Diterima"><span>Pelamar Tidak Diterima</span></a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 <?php } ?>
 
